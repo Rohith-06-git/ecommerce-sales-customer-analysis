@@ -4,24 +4,31 @@ file_path = "data/raw/amazon_ecommerce_1M.csv"
 
 df = pd.read_csv(file_path, nrows=10000)
 
-print(df.shape)
-print(df.info())
-print(df.describe())
+# print(df.shape)
+# print(df.info())
+# print(df.describe())
 
-print(df["category"].value_counts())
-print(df["category"].nunique())
-print(df.isna().sum())
-print(df.duplicated().sum())
-print(df["device"].unique())
-print(df.dtypes)
+# print(df["category"].value_counts())
+# print(df["category"].nunique())
+# print(df.isna().sum())
+# print(df.duplicated().sum())
+# print(df["device"].unique())
+# print(df.dtypes)
 
-df["purchase_date"] = pd.to_datetime(df["purchase_date"])
+# df["purchase_date"] = pd.to_datetime(df["purchase_date"])
 
-print("Earliest date:", df["purchase_date"].min())
-print("Latest date:", df["purchase_date"].max())
+# print("Earliest date:", df["purchase_date"].min())
+# print("Latest date:", df["purchase_date"].max())
 
-print(df[["price", "discount", "final_price", "rating",
-          "review_count", "stock", "shipping_time_days",
-          "seller_rating"]].describe())
+# print(df[["price", "discount", "final_price", "rating",
+#           "review_count", "stock", "shipping_time_days",
+#           "seller_rating"]].describe())
 
-print(df[["price", "discount", "final_price"]].head(10))
+# print(df[["price", "discount", "final_price"]].head(10))
+
+# print(df["category"].value_counts())
+# print(df["subcategory"].value_counts())
+
+print("Unique users:", df["user_id"].nunique())
+print("Unique products", df["product_id"].nunique())
+print("Unique sellers", df["seller_id"].nunique())
