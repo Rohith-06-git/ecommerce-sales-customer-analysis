@@ -62,3 +62,11 @@ print(df["location"].value_counts())
 # Does final_price actually represent the price after applying the discount?
 df["calculated_price"] = df["price"] * (1 - df["discount"] / 100)
 print((df["calculated_price"] - df["final_price"]).abs().max())
+
+# All about the pricing difference 
+print((df["calculated_price"] - df["final_price"]).abs().describe())
+
+# Finding the user who has large difference in pricing
+df["calculated_price"] = df["price"] * ( 1 - df["discount"] / 100 )
+df["price_diff"] = (df["calculated_price"] - df["final_price"]).abs()
+print(df.loc[df["price_diff"].idxmax()] , ["price","discount","calculated_price","final_price","price_diff"])
