@@ -52,3 +52,13 @@ print(df["device"].value_counts())
 
 # delivery status
 print(df["delivery_status"].value_counts())
+
+# how many repeated users + product combinations are there ?
+print(df.duplicated(subset=["user_id","product_id"]).sum())
+
+# location distribution 
+print(df["location"].value_counts())
+
+# Does final_price actually represent the price after applying the discount?
+df["calculated_price"] = df["price"] * (1 - df["discount"] / 100)
+print((df["calculated_price"] - df["final_price"]).abs().max())
