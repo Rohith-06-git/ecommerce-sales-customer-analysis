@@ -26,11 +26,10 @@ print(df[["price", "discount", "final_price", "rating",
 
 print(df[["price", "discount", "final_price"]].head(10))
 
-print(df["category"].value_counts())
 print(df["subcategory"].value_counts())
 
 print("Unique users:", df["user_id"].nunique())
-print("Unique products", df["product_id"].nunique())
+print("Unique products:", df["product_id"].nunique())
 print("Unique sellers", df["seller_id"].nunique())
 
 #Check repeated purchases by the same customer
@@ -41,3 +40,15 @@ print(df[df["user_id"] == "U387936"])
 print(
     df.groupby(["user_id", "product_id"]).size().sort_values(ascending=False).head(10)
 )
+
+print(df["is_returned"].value_counts())
+print(df.groupby("category")["is_returned"].mean())
+
+#payment methods
+print(df["payment_method"].value_counts())
+
+# device usage
+print(df["device"].value_counts())
+
+# delivery status
+print(df["delivery_status"].value_counts())
