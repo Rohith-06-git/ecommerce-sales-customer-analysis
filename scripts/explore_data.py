@@ -70,3 +70,18 @@ print((df["calculated_price"] - df["final_price"]).abs().describe())
 df["calculated_price"] = df["price"] * ( 1 - df["discount"] / 100 )
 df["price_diff"] = (df["calculated_price"] - df["final_price"]).abs()
 print(df.loc[df["price_diff"].idxmax()] , ["price","discount","calculated_price","final_price","price_diff"])
+
+# Check shipping time
+print(df["shipping_time_days"].describe())
+
+# Checking Seller rating
+print(df["seller_rating"].describe())
+
+# Checking rating
+print(df["rating"].describe())
+
+# Checking stock
+print(df["stock"].describe())
+
+# Records with zero stock
+print((df["stock"] == 0).sum())
