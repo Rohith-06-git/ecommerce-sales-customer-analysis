@@ -85,3 +85,9 @@ print(df["stock"].describe())
 
 # Records with zero stock
 print((df["stock"] == 0).sum())
+
+# stock analysis
+print(df["stock"].describe())
+
+# Check products with zero stock
+print("Zero stock records:", (df["stock"] == 0).sum())
