@@ -96,3 +96,11 @@ print("Zero stock records:", (df["stock"] == 0).sum())
 print(df["review_count"].describe())
 
 print("Products with no reviews:", (df["review_count"] == 0).sum())
+
+# Cardinality check
+print("Unique categories:", df["category"].nunique())
+print("Unique subcategories:", df["subcategory"].nunique())
+print("Unique locations:", df["location"].nunique())
+print("Unique payment methods:", df["payment_method"].nunique())
+print("Unique devices:", df["device"].nunique())
+print("Unique delivery statuses:", df["delivery_status"].nunique())
