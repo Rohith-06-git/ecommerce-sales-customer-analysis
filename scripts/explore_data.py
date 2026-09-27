@@ -112,3 +112,7 @@ print("Duplicate full rows:", df.duplicated().sum())
 print(
     df.isna().sum().sort_values(ascending=False)
 )
+
+# Customer analysis
+print("Unique customers:", df["customer_id"].nunique())
+print("Repeated customers:", (df["customer_id"].value_counts() > 1).sum())
