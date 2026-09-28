@@ -109,10 +109,10 @@ print("Unique delivery statuses:", df["delivery_status"].nunique())
 print("Duplicate full rows:", df.duplicated().sum())
 
 # Missing value summary
-print(
-    df.isna().sum().sort_values(ascending=False)
-)
+
+print(df.isna().sum().sort_values(ascending=False))
 
 # Customer analysis
+
 print("Unique customers:", df["customer_id"].nunique())
 print("Repeated customers:", (df["customer_id"].value_counts() > 1).sum())
