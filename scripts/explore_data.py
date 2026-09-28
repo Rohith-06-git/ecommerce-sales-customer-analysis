@@ -115,3 +115,10 @@ print(df.isna().sum().sort_values(ascending=False))
 
 print("Unique customers:", df["customer_id"].nunique())
 print("Repeated customers:", (df["customer_id"].value_counts() > 1).sum())
+
+# Customer frequency analysis
+customer_counts = df["customer_id"].value_counts()
+
+print("Unique customers:", df["customer_id"].nunique())
+print("Customers with multiple records:", (customer_counts > 1).sum())
+print("Maximum records by one customer:", customer_counts.max())
