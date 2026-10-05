@@ -132,4 +132,16 @@ print("Negative review count :" , (df["review_count"] < 0).sum())
 print("Negative stock:" , (df["stock"] < 0).sum())
 print("Negative shipping days:" , (df["shipping_time_days"] < 0).sum())
 
+print("Categories:", df["category"].unique())
+print("Devices:", df["device"].unique())
+print("Payment methods:", df["payment_method"].unique())
+print("Delivery statuses:", df["delivery_status"].unique())
+print("Returned values:", df["is_returned"].unique())
+df["category"].value_counts()
 
+# Range validation
+print("Price Range :", df["price"].min(), "-", df["price"].max())
+print("Discount Range :", df["discount"].min(), "-", df["discount"].max())
+print("Rating Range :", df["rating"].min(), "-", df["rating"].max())
+print("seller rating Range :", df["seller_rating"].min(), "-", df["seller_rating"].max())
+print("shipping days Range :", df["shipping_time_days"].min(), "-", df["shipping_time_days"].max())
