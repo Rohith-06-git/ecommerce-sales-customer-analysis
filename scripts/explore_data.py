@@ -97,6 +97,18 @@ print(df["review_count"].describe())
 
 print("Products with no reviews:", (df["review_count"] == 0).sum())
 
+# Customer analysis
+
+print("Unique customers:", df["customer_id"].nunique())
+print("Repeated customers:", (df["customer_id"].value_counts() > 1).sum())
+
+# Customer frequency analysis
+customer_counts = df["customer_id"].value_counts()
+
+print("Unique customers:", df["customer_id"].nunique())
+print("Customers with multiple records:", (customer_counts > 1).sum())
+print("Maximum records by one customer:", customer_counts.max())
+
 # Cardinality check
 print("Unique categories:", df["category"].nunique())
 print("Unique subcategories:", df["subcategory"].nunique())
@@ -111,16 +123,13 @@ print("Duplicate full rows:", df.duplicated().sum())
 # Missing value summary
 print(df.isna().sum().sort_values(ascending=False))
 
-# Customer analysis
-
-print("Unique customers:", df["customer_id"].nunique())
-print("Repeated customers:", (df["customer_id"].value_counts() > 1).sum())
-
-# Customer frequency analysis
-customer_counts = df["customer_id"].value_counts()
-
-print("Unique customers:", df["customer_id"].nunique())
-print("Customers with multiple records:", (customer_counts > 1).sum())
-print("Maximum records by one customer:", customer_counts.max())
+# data validity
+print("Negative prices :" , (df["price"] < 0).sum())
+print("Negative discount :" , (df["discount"] < 0).sum())
+print("Negative final price :" , (df["final_price"] < 0).sum())
+print("Negative rating :" , (df["rating"] < 0).sum())
+print("Negative review count :" , (df["review_count"] < 0).sum())
+print("Negative stock:" , (df["stock"] < 0).sum())
+print("Negative shipping days:" , (df["shipping_time_days"] < 0).sum())
 
 
