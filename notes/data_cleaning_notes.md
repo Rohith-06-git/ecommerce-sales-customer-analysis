@@ -326,3 +326,110 @@ df["column"].str.strip().ne(df["column"]).sum()
 Meaning:
 
 > Remove spaces temporarily → compare with the original → find differences → count them.
+
+## 4. Numeric Range Validation
+
+A value can be non-negative but still be invalid or suspicious.
+
+For example:
+
+```text
+Rating = 8
+```
+
+is not negative, but if ratings are on a 0–5 scale, it is invalid.
+
+Therefore, we should check the minimum and maximum values of important numeric columns.
+
+### Checking ranges
+
+```python
+print("Price range:", df["price"].min(), "-", df["price"].max())
+print("Discount range:", df["discount"].min(), "-", df["discount"].max())
+print("Rating range:", df["rating"].min(), "-", df["rating"].max())
+print("Seller rating range:", df["seller_rating"].min(), "-", df["seller_rating"].max())
+print("Shipping days range:", df["shipping_time_days"].min(), "-", df["shipping_time_days"].max())
+```
+
+### Understanding `.min()` and `.max()`
+
+`.min()` returns the smallest value:
+
+```python
+df["price"].min()
+```
+
+`.max()` returns the largest value:
+
+```python
+df["price"].max()
+```
+
+Together, they give us the range of a column.
+
+Example:
+
+```text
+Price range: 200.14 - 79885.53
+```
+
+means the smallest price is `200.14` and the largest price is `79885.53`.
+
+### Why range validation is useful
+
+It helps identify values that may be:
+
+- Impossible
+- Outside the expected business range
+- Data-entry errors
+- Suspicious outliers
+
+For example:
+
+```text
+Rating: 0 - 5       → expected
+Rating: 2 - 5       → possible, depending on the dataset
+Rating: 2 - 8       → suspicious
+```
+
+### Important
+
+A large value is not automatically an error.
+
+For example:
+
+```text
+Price = 79,885.53
+```
+
+may be expensive, but it is not necessarily invalid.
+
+We should investigate unusual values before removing or changing them.
+
+### Current Project Result
+
+For our 10,000-row sample:
+
+```text
+Price:             200.14 - 79885.53
+Discount:          5.01 - 69.96
+Rating:            2.0 - 5.0
+Seller rating:     2.5 - 5.0
+Shipping days:     1 - 6
+```
+
+No obviously invalid ranges were found in these columns.
+
+### Key Idea
+
+```text
+Negative-value check
+        ↓
+Catches impossible negative values
+
+Range validation
+        ↓
+Catches values that are outside sensible boundaries
+```
+
+Both checks are useful during data cleaning.
