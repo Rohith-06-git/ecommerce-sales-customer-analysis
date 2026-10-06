@@ -145,3 +145,11 @@ print("Discount Range :", df["discount"].min(), "-", df["discount"].max())
 print("Rating Range :", df["rating"].min(), "-", df["rating"].max())
 print("seller rating Range :", df["seller_rating"].min(), "-", df["seller_rating"].max())
 print("shipping days Range :", df["shipping_time_days"].min(), "-", df["shipping_time_days"].max())
+
+df["purchase_date"] = pd.to_datetime(df["purchase_date"])
+
+print("Date dtype :" ,df["purchase_date"].dtype)
+print("Missing Dates :" ,df["purchase_date"].isna().sum())
+print("Earliest Date :" ,df["purchase_date"].min())
+print("Latest Date :" ,df["purchase_date"].max())
+
