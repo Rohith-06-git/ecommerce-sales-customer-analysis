@@ -153,3 +153,6 @@ print("Missing Dates :" ,df["purchase_date"].isna().sum())
 print("Earliest Date :" ,df["purchase_date"].min())
 print("Latest Date :" ,df["purchase_date"].max())
 
+# Logical relationship between delivery_status and is_returned
+
+print( pd.crosstab(df["delivery_status"],df["is_returned"]))
